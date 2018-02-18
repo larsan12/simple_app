@@ -9,9 +9,6 @@ const applyOauth2Routers = require('./routes/oauth2')
 const jwt = require('jsonwebtoken')
 const app = express()
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'hjs')
 
 app.use(logger('dev'))
 app.use(bodyParser.json())
@@ -27,7 +24,11 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.tokensBlackList = []
 
 app.use((req, res, next) => {
-    if (["/login", "/oauth/token", "/oauth/authorize", "/check_phone"].indexOf(req.originalUrl) > -1) {
+    if (["/login", "/oauth/token", "/oauth/authorize", "/check_phone", "/"].indexOf(req.originalUrl) > -1
+        || req.originalUrl.indexOf("/js") > -1
+        || req.originalUrl.indexOf("/css") > -1
+        || req.originalUrl.indexOf("/favicon.ico") > -1
+    ) {
         next()
     } else {
         let authHeader = req.headers['authorization'] || ''
@@ -65,7 +66,7 @@ app.use((req, res, next) => {
 if (app.get('env') === 'development') {
     app.use((err, req, res, next) => {
         res.status(err.status || 500)
-        res.render('error', {
+        res.send({
             message: err.message,
             error: err
         })
@@ -73,7 +74,7 @@ if (app.get('env') === 'development') {
 } else {
     app.use((err, req, res, next) => {
         res.status(err.status || 500);
-        res.render('error', {
+        res.send({
             message: err.message,
             error: {}
         })

@@ -64,5 +64,13 @@ module.exports.initDb = async () => {
             NOT EXISTS (
                 SELECT client_id FROM oauth_clients WHERE client_id = 'key1');`)
 
+
+    await client.query(`INSERT INTO phones
+            (phone)
+        SELECT '+7 931 123 12 12'
+        WHERE
+            NOT EXISTS (
+                SELECT phone FROM phones WHERE phone = '+7 931 123 12 12');`)
+
     return client
 }

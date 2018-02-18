@@ -13,7 +13,6 @@ module.exports = app => {
     // Post token.
     router.post('/oauth/token', app.oauth.token())
 
-    /* TODO for grant_type=authorization_code
     app.post('/oauth/authorize', function(req, res) {
         // Redirect anonymous users to login page.
         if (!req.app.locals.user) {
@@ -22,7 +21,6 @@ module.exports = app => {
 
         return app.oauth.authorize()(req,res)
     })
-    */
 
     // Check phone through oauth2
     router.post('/check_phone', app.oauth.authenticate(), async (req, res) => {

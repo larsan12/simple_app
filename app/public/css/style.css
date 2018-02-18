@@ -1,0 +1,49 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.login-button, .add-phone, .logout, .delete-phone {
+    cursor: pointer;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.delete-phone {
+    padding: 10px;
+}
+
+input[type=text], input[type=password] {
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.error {
+    color: red;
+    margin: 10px;
+    margin-left: 0px;
+}
+
+.item {
+    display: flex;
+    flex-direction: row;
+    width: 258px;
+    justify-content: space-between;
+    margin: 10px;
+    margin-left: 0px;
+    background-color: #eee;
+}
+.label {
+    margin: 9px;
+}

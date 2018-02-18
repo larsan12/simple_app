@@ -1,6 +1,7 @@
 const router = require('express-promise-router')()
 const { client } = require('../db')
 const jwt = require('jsonwebtoken')
+const path = require("path")
 
 module.exports = app => {
 
@@ -9,7 +10,7 @@ module.exports = app => {
     })
 
     router.get('/', function(req, res, next) {
-        res.render('index', { title: 'Express' })
+        res.sendFile(path.join(__dirname+'/../views/index.html'));
     })
 
 
